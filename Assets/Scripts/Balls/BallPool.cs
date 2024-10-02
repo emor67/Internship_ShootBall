@@ -28,12 +28,22 @@ public class BallPool : MonoBehaviour
 
     private void Shoot(){
         Balls[0].gameObject.SetActive(true);
-        Balls[0].GetComponent<Rigidbody>().velocity = Vector3.forward * 15;
+        //Balls[0].GetComponent<Rigidbody>().velocity = Vector3.forward * 15;
+
+        Balls[0].GetComponent<Rigidbody>().isKinematic = true;
+
+        Balls[0].GetComponent<Rigidbody>().MovePosition(handPos.position + handPos.forward * 2);
+
+        Balls[0].GetComponent<Rigidbody>().isKinematic = false;
+
+        Balls[0].GetComponent<Rigidbody>().AddForce(handPos.forward * 15, ForceMode.Impulse);
+       
         _notListedBall = Balls[0];
-shootingIsAvailable = false;
+        shootingIsAvailable = false;
         Balls.RemoveAt(0);
         
-        Invoke("GetToThePool",2);   
+        Invoke("GetToThePool",1);  
+        _notListedBall.SetActive(true); 
     }
 
     public void GetToThePool(){
