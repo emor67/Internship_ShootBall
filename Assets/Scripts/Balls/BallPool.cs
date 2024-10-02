@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BallPool : MonoBehaviour
 {
+    Animator animator;
     public List<GameObject> Balls = new List<GameObject>();
     public Transform handPos;
     public GameObject targetObject;
@@ -14,7 +15,15 @@ public class BallPool : MonoBehaviour
 
     private void Start() {
         shootingIsAvailable = true;
-        
+        animator = gameObject.GetComponent<Animator>();
+    }
+
+    private void Update() {
+        if(shootingIsAvailable){
+            animator.SetBool("isReady", true);
+        }else{
+            animator.SetBool("isReady", false);
+        }
     }
     private void FixedUpdate() {
         if (Input.GetKey(KeyCode.Space)){
