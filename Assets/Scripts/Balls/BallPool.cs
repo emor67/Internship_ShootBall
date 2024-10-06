@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallPool : MonoBehaviour
+public class BallControl : MonoBehaviour
 {
     Animator animator;
     public List<GameObject> Balls = new List<GameObject>();
@@ -14,25 +14,36 @@ public class BallPool : MonoBehaviour
     private GameObject _notListedBall;
 
     private void Start() {
-        shootingIsAvailable = true;
+        shootingIsAvailable = false;
         animator = gameObject.GetComponent<Animator>();
     }
 
     private void Update() {
-        if(shootingIsAvailable){
+        if(shootingIsAvailable == true){
             animator.SetBool("isReady", true);
-        }else{
+        }else if(shootingIsAvailable == false){
             animator.SetBool("isReady", false);
         }
     }
     private void FixedUpdate() {
-        if (Input.GetKey(KeyCode.Space)){
-            if(shootingIsAvailable){
-                Shoot();
-                
-            }
+        if(shootingIsAvailable == true){
+                Shoot();      
+        }else if(shootingIsAvailable == false){
+            
         }
         handPos = targetObject.transform;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.CompareTag("Hoop")){
+            shootingIsAvailable = true;
+        }
+    }
+    private void OnTriggerExit(Collider other) {
+        if(other.CompareTag("Hoop")){
+            shootingIsAvailable = false;
+            Debug.Log("Player exited the trigger");
+        }
     }
 
     private void Shoot(){
@@ -46,6 +57,7 @@ public class BallPool : MonoBehaviour
         Balls[0].GetComponent<Rigidbody>().isKinematic = false;
 
         Balls[0].GetComponent<Rigidbody>().AddForce(handPos.forward * 15, ForceMode.Impulse);
+        //slerp?
        
         _notListedBall = Balls[0];
         shootingIsAvailable = false;
@@ -59,7 +71,6 @@ public class BallPool : MonoBehaviour
         Balls.Add(_notListedBall);
         _notListedBall.transform.position = handPos.position;
         _notListedBall.SetActive(false);
-        shootingIsAvailable = true;
     }
 
 }
