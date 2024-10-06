@@ -1657,6 +1657,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 222106564}
+  - component: {fileID: 222106567}
+  - component: {fileID: 222106566}
+  - component: {fileID: 222106565}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -1690,6 +1693,68 @@ Transform:
   - {fileID: 3290441886491560071}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &222106565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222106563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e73075afd639df46ba6c4dfaca23e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  moveDuration: 2
+--- !u!65 &222106566
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222106563}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.5298343, y: 1.7969962, z: 0.59610844}
+  m_Center: {x: -0.33049703, y: 0.39849812, z: 6.2577643}
+--- !u!54 &222106567
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222106563}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &238726749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6817011546557079818, guid: 960ac367670c77645af6d58d2c8c19a1, type: 3}
@@ -15684,11 +15749,12 @@ GameObject:
   - component: {fileID: 543450653205983378}
   - component: {fileID: 5866666021514259176}
   - component: {fileID: 1718918054948367013}
+  - component: {fileID: 5866666021514259178}
   - component: {fileID: 4273384450648409594}
   - component: {fileID: 5866666021514259177}
   m_Layer: 0
   m_Name: Stickman
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16792,7 +16858,7 @@ GameObject:
   - component: {fileID: 2003838305954040565}
   m_Layer: 0
   m_Name: basketballhoop
-  m_TagString: Untagged
+  m_TagString: Hoop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20465,10 +20531,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 919132149556947496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26045445a48e6b04aa7fe0733c9d3956, type: 3}
+  m_Script: {fileID: 11500000, guid: 126c97ccd3e0a3e4fb7b9708199b9ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   Balls:
   - {fileID: 1616264188}
   - {fileID: 1283596142}
@@ -20477,7 +20542,27 @@ MonoBehaviour:
   handPos: {fileID: 890377276}
   targetObject: {fileID: 890377275}
   shootingIsAvailable: 1
-  _notListedBall: {fileID: 0}
+--- !u!65 &5866666021514259178
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149556947496}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.9479734, z: 1}
+  m_Center: {x: 0, y: 0.78229564, z: 0}
 --- !u!1 &5885810299374251784
 GameObject:
   m_ObjectHideFlags: 0

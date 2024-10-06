@@ -42,7 +42,6 @@ public class BallControl : MonoBehaviour
     private void OnTriggerExit(Collider other) {
         if(other.CompareTag("Hoop")){
             shootingIsAvailable = false;
-            Debug.Log("Player exited the trigger");
         }
     }
 

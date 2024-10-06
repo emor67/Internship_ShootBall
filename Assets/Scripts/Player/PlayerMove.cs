@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-   public float moveSpeed = 5f;       
+    public float moveSpeed = 5f;       
     public float horizontalSpeed = 3f; 
     public float smoothTime = 0.1f;    
 
-    private Rigidbody rb;
-    private float targetHorizontal = 0f;
-    private float currentHorizontal = 0f;
-    private float horizontalVelocity = 0f;
+    private Rigidbody _rb;
+    private float _targetHorizontal = 0f;
+    private float _currentHorizontal = 0f;
+    private float _horizontalVelocity = 0f;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotation;  
+        _rb = GetComponent<Rigidbody>();
+        _rb.constraints = RigidbodyConstraints.FreezeRotation;  
     }
 
     void FixedUpdate()
@@ -25,10 +25,10 @@ public class PlayerMove : MonoBehaviour
 
         float horizontalInput = Input.GetAxis("Horizontal");
 
-        targetHorizontal = horizontalInput * horizontalSpeed;
-        currentHorizontal = Mathf.SmoothDamp(currentHorizontal, targetHorizontal, ref horizontalVelocity, smoothTime);
-        Vector3 horizontalMove = transform.right * currentHorizontal;
+        _targetHorizontal = horizontalInput * horizontalSpeed;
+        _currentHorizontal = Mathf.SmoothDamp(_currentHorizontal, _targetHorizontal, ref _horizontalVelocity, smoothTime);
+        Vector3 horizontalMove = transform.right * _currentHorizontal;
 
-        rb.velocity = forwardMove + horizontalMove;
+        _rb.velocity = forwardMove + horizontalMove;
     }
 }
