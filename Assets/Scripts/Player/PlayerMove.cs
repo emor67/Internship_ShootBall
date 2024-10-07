@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     public float moveSpeed = 5f;       
     public float horizontalSpeed = 3f; 
-    public float smoothTime = 0.1f;    
+    public float smoothTime = 0.1f;  
 
     private Rigidbody _rb;
     private float _targetHorizontal = 0f;

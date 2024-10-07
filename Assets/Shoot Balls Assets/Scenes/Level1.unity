@@ -1658,8 +1658,6 @@ GameObject:
   m_Component:
   - component: {fileID: 222106564}
   - component: {fileID: 222106567}
-  - component: {fileID: 222106566}
-  - component: {fileID: 222106565}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -1693,41 +1691,6 @@ Transform:
   - {fileID: 3290441886491560071}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &222106565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222106563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e73075afd639df46ba6c4dfaca23e05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  moveDuration: 2
---- !u!65 &222106566
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222106563}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 7.5298343, y: 1.7969962, z: 0.59610844}
-  m_Center: {x: -0.33049703, y: 0.39849812, z: 6.2577643}
 --- !u!54 &222106567
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8622,6 +8585,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194411681}
   m_CullTransparentMesh: 1
+--- !u!1 &1198092543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198092545}
+  - component: {fileID: 1198092544}
+  m_Layer: 0
+  m_Name: StopPoint
+  m_TagString: Stop
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1198092544
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198092543}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.9618344, y: 0.48109007, z: 1}
+  m_Center: {x: -0.51275563, y: 0.11341732, z: 0}
+--- !u!4 &1198092545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198092543}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 6.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1201323519 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6817011546557079818, guid: 960ac367670c77645af6d58d2c8c19a1, type: 3}
@@ -16878,12 +16894,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2.1074991, z: 6.7011256}
-  m_Center: {x: 0, y: 0.55374986, z: -3.3505628}
+  m_Size: {x: 2, y: 0.7552957, z: 6.7011256}
+  m_Center: {x: 0, y: 1.2298515, z: -3.3505628}
 --- !u!96 &2011155323909580542
 TrailRenderer:
   serializedVersion: 3
@@ -20557,12 +20573,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.9479734, z: 1}
-  m_Center: {x: 0, y: 0.78229564, z: 0}
+  m_Size: {x: 1, y: 2.374357, z: 1}
+  m_Center: {x: 0, y: 0.9954876, z: 0}
 --- !u!1 &5885810299374251784
 GameObject:
   m_ObjectHideFlags: 0
@@ -24149,3 +24165,4 @@ SceneRoots:
   - {fileID: 285263155}
   - {fileID: 222106564}
   - {fileID: 543450653205983378}
+  - {fileID: 1198092545}

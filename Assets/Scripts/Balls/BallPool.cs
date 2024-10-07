@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallControl : MonoBehaviour
+public class BallPool : MonoBehaviour
 {
     Animator animator;
     public List<GameObject> Balls = new List<GameObject>();
@@ -18,18 +18,13 @@ public class BallControl : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
     }
 
+
     private void Update() {
         if(shootingIsAvailable == true){
             animator.SetBool("isReady", true);
+            Shoot();      
         }else if(shootingIsAvailable == false){
             animator.SetBool("isReady", false);
-        }
-    }
-    private void FixedUpdate() {
-        if(shootingIsAvailable == true){
-                Shoot();      
-        }else if(shootingIsAvailable == false){
-            
         }
         handPos = targetObject.transform;
     }
@@ -42,9 +37,9 @@ public class BallControl : MonoBehaviour
     private void OnTriggerExit(Collider other) {
         if(other.CompareTag("Hoop")){
             shootingIsAvailable = false;
+            //Debug.Log("exit");
         }
     }
-
     private void Shoot(){
         Balls[0].gameObject.SetActive(true);
         //Balls[0].GetComponent<Rigidbody>().velocity = Vector3.forward * 15;
@@ -62,14 +57,15 @@ public class BallControl : MonoBehaviour
         shootingIsAvailable = false;
         Balls.RemoveAt(0);
         
-        Invoke("GetToThePool",1);  
+        Invoke("GetToThePool",1f);  
         _notListedBall.SetActive(true); 
     }
 
-    public void GetToThePool(){
+    private void GetToThePool(){
         Balls.Add(_notListedBall);
         _notListedBall.transform.position = handPos.position;
         _notListedBall.SetActive(false);
+        shootingIsAvailable = true;
     }
 
 }
