@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    Animator animator;
+    public GameObject uiElementTutorial;
     public float moveSpeed = 5f;       
-    public float horizontalSpeed = 3f; 
+    public float horizontalSpeed = 5f; 
     public float smoothTime = 0.1f;  
+    public bool canMove;
 
     private Rigidbody _rb;
     private float _targetHorizontal = 0f;
@@ -15,8 +18,10 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
+        canMove = false;
         _rb = GetComponent<Rigidbody>();
         _rb.constraints = RigidbodyConstraints.FreezeRotation;  
+        animator = gameObject.GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -30,5 +35,22 @@ public class PlayerMove : MonoBehaviour
         Vector3 horizontalMove = transform.right * _currentHorizontal;
 
         _rb.velocity = forwardMove + horizontalMove;
+    }
+
+    private void Update() {
+        if(canMove == false){
+            moveSpeed = 0f;
+            horizontalSpeed = 0f;
+            animator.SetBool("canMove", false);
+        }else if(canMove == true){
+            moveSpeed = 5f;
+            horizontalSpeed = 5f;
+            animator.SetBool("canMove", true);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space)){
+            canMove = true;
+            uiElementTutorial.SetActive(false);
+        }
     }
 }
