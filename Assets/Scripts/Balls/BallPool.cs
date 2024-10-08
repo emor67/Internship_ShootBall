@@ -10,6 +10,7 @@ public class BallPool : MonoBehaviour
     public GameObject targetObject;
 
     public bool shootingIsAvailable;
+    private bool hasShot = false;  
 
     private GameObject _notListedBall;
 
@@ -18,47 +19,51 @@ public class BallPool : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
     }
 
-
     private void Update() {
         if(shootingIsAvailable == true){
             animator.SetBool("isReady", true);
-            Shoot();      
-        }else if(shootingIsAvailable == false){
+        } else if(shootingIsAvailable == false){
             animator.SetBool("isReady", false);
         }
-        handPos = targetObject.transform;
+
+        handPos = targetObject.transform;  
     }
 
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Hoop")){
             shootingIsAvailable = true;
+            hasShot = false;  
         }
     }
+
+    private void OnTriggerStay(Collider other) {
+        if(other.CompareTag("Hoop") && !hasShot && shootingIsAvailable){
+            Shoot();
+            hasShot = true; 
+        }
+    }
+
     private void OnTriggerExit(Collider other) {
         if(other.CompareTag("Hoop")){
             shootingIsAvailable = false;
-            //Debug.Log("exit");
+            animator.SetBool("isReady", false);
+            //Debug.Log("anim stop");
         }
     }
+
     private void Shoot(){
         Balls[0].gameObject.SetActive(true);
-        //Balls[0].GetComponent<Rigidbody>().velocity = Vector3.forward * 15;
 
         Balls[0].GetComponent<Rigidbody>().isKinematic = true;
-
         Balls[0].GetComponent<Rigidbody>().MovePosition(handPos.position + handPos.forward * 2);
-
         Balls[0].GetComponent<Rigidbody>().isKinematic = false;
-
         Balls[0].GetComponent<Rigidbody>().AddForce(handPos.forward * 15, ForceMode.Impulse);
-        //slerp?
-       
+        //slerp
+
         _notListedBall = Balls[0];
-        shootingIsAvailable = false;
         Balls.RemoveAt(0);
-        
-        Invoke("GetToThePool",1f);  
-        _notListedBall.SetActive(true); 
+
+        Invoke("GetToThePool", 0.7f);  
     }
 
     private void GetToThePool(){
@@ -66,6 +71,6 @@ public class BallPool : MonoBehaviour
         _notListedBall.transform.position = handPos.position;
         _notListedBall.SetActive(false);
         shootingIsAvailable = true;
+        hasShot = false;  
     }
-
 }
