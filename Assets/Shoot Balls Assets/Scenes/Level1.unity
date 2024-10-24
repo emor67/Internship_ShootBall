@@ -8418,6 +8418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1126589142}
   - component: {fileID: 1126589143}
+  - component: {fileID: 1126589144}
   m_Layer: 0
   m_Name: basketballhoop (1)
   m_TagString: Hoop
@@ -8466,6 +8467,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 0.7552957, z: 6.7011256}
   m_Center: {x: 0, y: 1.2298515, z: -3.3505628}
+--- !u!114 &1126589144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126589141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ab2ac57714fd9499dce4d93d661a29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1244403989}
+  score: 5
+  ballPool: {fileID: 5866666021514259177}
+  _ballScore: 0
 --- !u!1 &1129255573
 GameObject:
   m_ObjectHideFlags: 0
@@ -18557,6 +18574,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1190288399073169486}
   - component: {fileID: 2003838305954040565}
+  - component: {fileID: 2003838305954040566}
   m_Layer: 0
   m_Name: basketballhoop
   m_TagString: Hoop
@@ -18585,6 +18603,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 0.7552957, z: 6.7011256}
   m_Center: {x: 0, y: 1.2298515, z: -3.3505628}
+--- !u!114 &2003838305954040566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003838305954040564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ab2ac57714fd9499dce4d93d661a29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 2626495570108523902}
+  score: 5
+  ballPool: {fileID: 5866666021514259177}
+  _ballScore: 0
 --- !u!96 &2011155323909580542
 TrailRenderer:
   serializedVersion: 3
@@ -22448,6 +22482,7 @@ MonoBehaviour:
   handPos: {fileID: 890377276}
   targetObject: {fileID: 890377275}
   shootingIsAvailable: 1
+  hasShot: 0
 --- !u!65 &5866666021514259178
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23694,7 +23729,7 @@ GameObject:
   - component: {fileID: 8745514576149218834}
   - component: {fileID: 2626495570108523902}
   m_Layer: 0
-  m_Name: Text (TMP) (1)
+  m_Name: TextHoop (TMP) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25176,7 +25211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8390393972509661353
 Transform:
   m_ObjectHideFlags: 0
