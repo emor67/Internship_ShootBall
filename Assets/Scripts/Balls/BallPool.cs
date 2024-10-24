@@ -30,21 +30,22 @@ public class BallPool : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("Hoop")){
+        if(other.CompareTag("Hoop") || other.CompareTag("Gate")){
             shootingIsAvailable = true;
             hasShot = false;  
         }
     }
 
     private void OnTriggerStay(Collider other) {
-        if(other.CompareTag("Hoop") && !hasShot && shootingIsAvailable){
+        if((other.CompareTag("Hoop") || other.CompareTag("Gate")) && !hasShot && shootingIsAvailable){
+            shootingIsAvailable = true;
             Shoot();
             hasShot = true; 
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if(other.CompareTag("Hoop")){
+        if(other.CompareTag("Hoop") || other.CompareTag("Gate")){
             shootingIsAvailable = false;
             animator.SetBool("isReady", false);
             //Debug.Log("anim stop");
